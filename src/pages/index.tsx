@@ -18,7 +18,7 @@ const Home = () => {
           </div>
           <div className="py-5 gap-6 grid grid-cols-6">
             {"123456789101".split("").map((i) => (
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2" key={i}>
                 <img
                   src="https://pbs.twimg.com/media/ESIJQ9IXYAIssnE?format=jpg&name=large"
                   alt="no-time-to-die"
