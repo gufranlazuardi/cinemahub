@@ -1,7 +1,21 @@
-import React from "react";
+import { ReactNode } from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
-const Layout = () => {
-  return <div>Layout</div>;
+interface Props {
+  children: ReactNode;
+}
+
+const Layout = (props: Readonly<Props>) => {
+  const { children } = props;
+
+  return (
+    <div className=" w-screen h-full overflow-auto px-14 py-8">
+      <Navbar />
+      <div>{children}</div>
+      <Footer />
+    </div>
+  );
 };
 
 export default Layout;
