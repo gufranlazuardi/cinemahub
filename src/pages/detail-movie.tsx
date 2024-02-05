@@ -28,10 +28,16 @@ const DetailMovie = () => {
               <p>163 Min</p>
             </div>
             <p className=" text-7xl">9.4</p>
-            <div className="flex gap-2">
-              <p className="w-fit h-fit border rounded-xl px-2">Action</p>
-              <p className="w-fit h-fit border rounded-xl px-2">Adventure</p>
-              <p className="w-fit h-fit border rounded-xl px-2">Thriller</p>
+            <div className="flex gap-2 pt-1">
+              <p className="w-fit h-fit border rounded-md px-4 py-1 text-sm">
+                Action
+              </p>
+              <p className="w-fit h-fit border rounded-md px-4 py-1 text-sm">
+                Adventure
+              </p>
+              <p className="w-fit h-fit border rounded-md px-4 py-1 text-sm">
+                Thriller
+              </p>
             </div>
           </div>
         </div>
