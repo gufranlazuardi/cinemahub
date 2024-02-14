@@ -19,7 +19,13 @@ const TopRatedCard = () => {
       </div>
       <div className="py-5 gap-6 grid grid-cols-8">
         {"12345671".split("").map((i) => (
-          <div className="flex flex-col gap-2 cursor-pointer" key={i}>
+          <div
+            className="flex flex-col gap-2 cursor-pointer"
+            onClick={() => {
+              navigate("/detail-movie");
+            }}
+            key={i}
+          >
             <img
               src="https://pbs.twimg.com/media/ESIJQ9IXYAIssnE?format=jpg&name=large"
               alt="no-time-to-die"
