@@ -12,6 +12,8 @@ axiosWithConfig.interceptors.request.use((axiosConfig) => {
     api_key: import.meta.env.VITE_API_KEY,
   };
 
+  axiosConfig.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjgyZDBhOThiNGNlNjNjMzM4NmQ5MzE2ZmMwMzQ3NiIsInN1YiI6IjY1NmQ1MjU1OGVlMGE5MDBhZTg0ZmQ1OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BUDIDWTFY3Xy9kDy82pc_RTr_v-Mdx8BFD-JQXfyFwI`;
+
   return axiosConfig;
 });
 
