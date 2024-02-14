@@ -1,7 +1,7 @@
 import Home from "@/pages";
 import DetailMovie from "@/pages/detail-movie";
-import ListFeature from "@/pages/list-feature";
 import ListNowPlaying from "@/pages/list-now-playing";
+import ListPopular from "@/pages/list-popular";
 import ListTopRated from "@/pages/list-top-rated";
 import ListUpcoming from "@/pages/list-upcoming";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -17,19 +17,19 @@ export default function Router() {
       element: <DetailMovie />,
     },
     {
-      path: "/list-feature",
-      element: <ListFeature />,
+      path: "/movie/popular",
+      element: <ListPopular />,
     },
     {
-      path: "/list-top-rated",
+      path: "/movie/top_rated",
       element: <ListTopRated />,
     },
     {
-      path: "list-now-playing",
+      path: "/movie/now_playing",
       element: <ListNowPlaying />,
     },
     {
-      path: "list-upcoming",
+      path: "/movie/upcoming",
       element: <ListUpcoming />,
     },
   ]);
