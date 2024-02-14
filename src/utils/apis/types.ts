@@ -1,13 +1,3 @@
-export interface AllMovie {
-  result: {
-    id: number;
-    adult: boolean;
-  }[];
-  page: number;
-  total_pages: number;
-  total_results: number;
-}
-
 export interface MovieDetail {
   adult: boolean;
   backdrop_path: string;
@@ -23,7 +13,7 @@ export interface MovieDetail {
   original_language: string;
   original_title: string;
   overview: string;
-  popularity: 61.416;
+  popularity: number;
   poster_path: string;
   release_date: string;
   revenue: number;
@@ -54,7 +44,7 @@ export interface MovieList {
     video: boolean;
     vote_average: string;
     vote_count: string;
-  }[];
+  };
   total_pages: number;
   total_results: number;
 }
