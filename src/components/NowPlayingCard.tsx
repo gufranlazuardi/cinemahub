@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const NowPlayingCard = () => {
   const navigate = useNavigate();
+  
   return (
     <>
       <div className="flex justify-between pt-8">
