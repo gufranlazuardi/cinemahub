@@ -1,2 +1,2 @@
-import { getAllMovies, getDetailMovie, getListMovie } from "./api";
-export { getAllMovies, getDetailMovie, getListMovie };
+import { getDetailMovie } from "./api";
+export { getDetailMovie };
