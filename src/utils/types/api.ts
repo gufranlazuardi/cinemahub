@@ -1,11 +1,13 @@
+import { MovieList, MovieVideoResult } from "../apis/types";
+
 export interface Response {
-  results: ResponseResult;
+  results: MovieList[];
   page: number;
   total_pages: number;
   total_result: number;
 }
 
-export interface ResponseResult {
+export interface MovieVideosResponse {
   id: number;
-  adult: boolean;
+  results: MovieVideoResult[];
 }
