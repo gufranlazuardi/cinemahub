@@ -13,7 +13,7 @@ export default function Router() {
       element: <Home />,
     },
     {
-      path: "/detail-movie",
+      path: "/detail-movie/:movie_id",
       element: <DetailMovie />,
     },
     {
