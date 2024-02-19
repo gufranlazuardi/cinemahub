@@ -1,19 +1,35 @@
-import Layout from "@/components/Layout";
-import { CornerUpLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import MovieCardOnList from "@/components/MovieCardOnList";
+import { useToast } from "@/components/ui/use-toast";
+import Layout from "@/components/Layout";
+
+import { getTopRatedList, MovieItem } from "@/utils/apis/index";
+
+import { CornerUpLeft } from "lucide-react";
 
 const ListTopRated = () => {
+  const [dataTopRateds, setDataTopRateds] = useState<MovieItem[]>([]);
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    try {
+      const result = await getTopRatedList();
+      setDataTopRateds(result.results);
+    } catch (error: any) {
+      toast({
+        title: "Oops! Something went wrong.",
+        description: error.toString(),
+        variant: "destructive",
+      });
+    }
+  }
 
   return (
     <Layout>
@@ -28,48 +44,16 @@ const ListTopRated = () => {
             <CornerUpLeft size={15} />
             <p>back</p>
           </div>
-          <h1 className=" text-4xl font-bold py-2 mx-auto">Top Rated</h1>
+          <h1 className="text-4xl font-bold py-2 mx-auto">Top Rated</h1>
         </div>
         <div className=" border-l-8 border-lime-500 pl-2">
           <p className="text-lg font-semibold">Recently Added</p>
         </div>
         <div className="py-5 gap-6 grid grid-cols-6">
-          {"123456789101948484848484".split("").map((i) => (
-            <div
-              className="flex flex-col gap-2 cursor-pointer"
-              onClick={() => {
-                navigate("/detail-movie");
-              }}
-              key={i}
-            >
-              <img
-                src="https://pbs.twimg.com/media/ESIJQ9IXYAIssnE?format=jpg&name=large"
-                alt="no-time-to-die"
-                className="w-auto h-80 border-black rounded-xl"
-              />
-              <div>
-                <p className="font-bold txt-md">No Time To Die</p>
-                <p className=" text-sm">2020</p>
-              </div>
-            </div>
+          {dataTopRateds.map((topRated, index) => (
+            <MovieCardOnList data={topRated} key={index} />
           ))}
         </div>
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious href="#" />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
       </div>
     </Layout>
   );
