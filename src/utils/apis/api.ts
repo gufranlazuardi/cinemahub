@@ -3,7 +3,7 @@ import axiosWithConfig from "../axiosWithConfig";
 export const getPopularList = async () => {
   try {
     const response = await axiosWithConfig.get(`/movie/popular`);
-
+    // tambahin sesuatu
     return response.data;
   } catch (error: any) {
     throw Error(error.response.data.message);
