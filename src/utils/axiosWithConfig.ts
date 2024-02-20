@@ -19,6 +19,11 @@ axiosWithConfig.interceptors.request.use((axiosConfig) => {
     ...queries,
   };
 
+  // Include API Read Access Token in headers
+  axiosConfig.headers.Authorization = `Bearer ${
+    import.meta.env.VITE_API_READ_ACCESS_TOKEN
+  }`;
+
   return axiosConfig;
 });
 
