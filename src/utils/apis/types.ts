@@ -1,12 +1,10 @@
 export interface MovieDetail {
   adult: boolean;
   backdrop_path: string;
-  genres: [
-    {
-      id: number;
-      name: string;
-    }[]
-  ];
+  genres: {
+    id: number;
+    name: string;
+  }[];
   homepage: string;
   id: number;
   imdb_id: string;
@@ -22,6 +20,7 @@ export interface MovieDetail {
   tagline: string;
   title: string;
   video: false;
+  vote_average: number;
 }
 
 export interface MovieList {
@@ -48,6 +47,24 @@ export interface MovieItem {
 }
 
 export interface MovieVideoResult {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+}
+
+export interface TrailerMovie {
+  id: number;
+  results: TrailerMovieResults[];
+}
+
+export interface TrailerMovieResults {
   iso_639_1: string;
   iso_3166_1: string;
   name: string;
