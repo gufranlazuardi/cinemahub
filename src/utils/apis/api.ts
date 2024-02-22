@@ -48,3 +48,13 @@ export const getDetailMovie = async (movie_id: number) => {
     throw Error(error.response.data.message);
   }
 };
+
+export const getTrailerMovie = async (movie_id: number) => {
+  try {
+    const response = await axiosWithConfig.get(`movie/${movie_id}/videos`);
+
+    return response.data;
+  } catch (error: any) {
+    throw Error(error.response.data.message);
+  }
+};
