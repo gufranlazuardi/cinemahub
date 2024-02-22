@@ -4,8 +4,16 @@ import {
   getTopRatedList,
   getUpcomingList,
   getDetailMovie,
+  getTrailerMovie,
 } from "./api";
-import { MovieDetail, MovieItem, MovieList, MovieVideoResult } from "./types";
+import {
+  MovieDetail,
+  MovieItem,
+  MovieList,
+  MovieVideoResult,
+  TrailerMovie,
+  TrailerMovieResults,
+} from "./types";
 
 export {
   getPopularList,
@@ -13,5 +21,13 @@ export {
   getTopRatedList,
   getUpcomingList,
   getDetailMovie,
+  getTrailerMovie,
 };
-export type { MovieDetail, MovieItem, MovieList, MovieVideoResult };
+export type {
+  MovieDetail,
+  MovieItem,
+  MovieList,
+  MovieVideoResult,
+  TrailerMovie,
+  TrailerMovieResults,
+};
