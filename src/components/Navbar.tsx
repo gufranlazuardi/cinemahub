@@ -1,5 +1,5 @@
-import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ComboBox from "./ComboBox";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,15 +15,9 @@ const Navbar = () => {
         >
           Cinemahub
         </h1>
-        <form className="w-1/3 h-10 px-4 flex gap-4 border rounded-md items-center justify-between">
-          <input
-            type="text"
-            placeholder="Search movie..."
-            className="text-sm w-full border-none"
-          />
-
-          <Search size={18} />
-        </form>
+        <div className="w-1/3 h-10 px-4 flex gap-4 rounded-md items-center justify-between">
+          <ComboBox />
+        </div>
       </div>
     </div>
   );
