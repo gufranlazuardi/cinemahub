@@ -20,7 +20,7 @@ const MovieCardOnList = (props: Props) => {
         <img
           src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
           alt={data.title}
-          className="w-auto h-80 border-black rounded-xl"
+          className="w-auto h-80 rounded-xl hover:scale-95 hover:bg-slate-900 hover:opacity-75 transition"
         />
         <div>
           <p className="font-bold text-md">{data.title}</p>
