@@ -81,7 +81,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="h-screen w-full flex flex-col">
+      <div className="h-screen w-full flex flex-col gap-10">
         {/* popular */}
         <div className="flex flex-col">
           <div className="flex justify-between">
@@ -94,7 +94,9 @@ const Home = () => {
                 navigate("/movie/popular");
               }}
             >
-              <p className="text-sm">See all</p>
+              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+                <p className="text-sm">See all</p>
+              </div>
             </div>
           </div>
           <div className="py-5 gap-6 grid grid-cols-6">
@@ -116,7 +118,9 @@ const Home = () => {
                 navigate("/movie/top_rated");
               }}
             >
-              <p className="text-sm">See all</p>
+              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+                <p className="text-sm">See all</p>
+              </div>
             </div>
           </div>
 
@@ -140,7 +144,9 @@ const Home = () => {
                 navigate("/movie/now_playing");
               }}
             >
-              <p className="text-sm">See all</p>
+              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+                <p className="text-sm">See all</p>
+              </div>
             </div>
           </div>
 
@@ -164,7 +170,9 @@ const Home = () => {
                 navigate("/movie/upcoming");
               }}
             >
-              <p className="text-sm">See all</p>
+              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+                <p className="text-sm">See all</p>
+              </div>
             </div>
           </div>
 
