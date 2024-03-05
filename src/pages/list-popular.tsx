@@ -9,14 +9,19 @@ import { getPopularList, MovieItem } from "@/utils/apis/index";
 
 import { CornerUpLeft } from "lucide-react";
 
+import PaginationBar from "@/components/PaginationBar";
+
 const ListPopular = () => {
   const [dataPopulars, setDataPopulars] = useState<MovieItem[]>([]);
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 12;
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   async function fetchData() {
     try {
@@ -30,6 +35,19 @@ const ListPopular = () => {
       });
     }
   }
+
+  const handlePageChange = (direction: "prev" | "next") => {
+    setCurrentPage((prevPage) =>
+      direction === "prev" ? prevPage - 1 : prevPage + 1
+    );
+  };
+
+  const totalPages = Math.ceil(dataPopulars.length / pageSize);
+
+  const visibleMovies = dataPopulars.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
   return (
     <Layout>
@@ -50,11 +68,17 @@ const ListPopular = () => {
           <p className="text-lg font-semibold">Recently Added</p>
         </div>
         <div className="py-5 gap-6 grid grid-cols-6">
-          {dataPopulars.map((popular, index) => (
+          {visibleMovies.map((popular, index) => (
             <MovieCardOnList data={popular} key={index} />
           ))}
         </div>
       </div>
+
+      <PaginationBar
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </Layout>
   );
 };
