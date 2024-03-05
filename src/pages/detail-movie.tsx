@@ -20,7 +20,7 @@ const DetailMovie = () => {
   async function fetchData() {
     try {
       const result = await getDetailMovie(parseInt(movie_id ?? ""));
-      // const videoDetail = await
+
       setDetail(result);
     } catch (error: any) {
       toast({
@@ -54,6 +54,8 @@ const DetailMovie = () => {
             alt={detail?.title}
             className="w-full h-96 object-cover object-top"
           />
+
+          {/* youtube */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-full bg-cover object-cover">
             <iframe
               title={trailer?.name}
@@ -63,7 +65,6 @@ const DetailMovie = () => {
             />
           </div>
         </div>
-
         <div className="flex gap-7">
           <div className="flex">
             <img
