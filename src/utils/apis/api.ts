@@ -1,4 +1,5 @@
 import axiosWithConfig from "../axiosWithConfig";
+import { MovieSearcResponse, MovieSearchRequest } from "../types/api";
 
 export const getPopularList = async () => {
   try {
@@ -54,6 +55,31 @@ export const getTrailerMovie = async (movie_id: number) => {
     const response = await axiosWithConfig.get(`movie/${movie_id}/videos`);
 
     return response.data;
+  } catch (error: any) {
+    throw Error(error.response.data.message);
+  }
+};
+
+export const getSearchMovie = async (query?: MovieSearchRequest) => {
+  try {
+    // let params = "";
+
+    // if (query) {
+    //   const queryParams: string[] = [];
+
+    //   let key: keyof typeof query;
+    //   for (key in query) {
+    //     queryParams.push(`${key}=${query[key]}`);
+    //   }
+
+    //   params = queryParams.join("&");
+    // }
+
+    const url = `/search/movie?query=${query?.title}&page=${query}`;
+    console.log("url", url);
+    const response = await axiosWithConfig.get(url);
+
+    return response.data as MovieSearcResponse;
   } catch (error: any) {
     throw Error(error.response.data.message);
   }

@@ -1,7 +1,12 @@
-import { MovieList, MovieVideoResult } from "../apis/types";
+import { MovieDetail, MovieVideoResult } from "../apis/types";
 
-export interface Response {
-  results: MovieList[];
+export interface MovieSearchRequest {
+  title: string;
+  // page: number;
+}
+
+export interface MovieSearcResponse {
+  results: MovieDetail[];
   page: number;
   total_pages: number;
   total_result: number;
