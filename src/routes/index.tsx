@@ -4,6 +4,7 @@ import ListNowPlaying from "@/pages/list-now-playing";
 import ListPopular from "@/pages/list-popular";
 import ListTopRated from "@/pages/list-top-rated";
 import ListUpcoming from "@/pages/list-upcoming";
+import SearchMovie from "@/pages/search-movie";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 export default function Router() {
@@ -31,6 +32,10 @@ export default function Router() {
     {
       path: "/movie/upcoming",
       element: <ListUpcoming />,
+    },
+    {
+      path: "/search/:query",
+      element: <SearchMovie />,
     },
   ]);
 
