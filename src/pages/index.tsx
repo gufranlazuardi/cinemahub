@@ -9,7 +9,9 @@ import {
 } from "@/utils/apis/api";
 import { MovieItem } from "@/utils/apis/types";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import debounce from "lodash.debounce";
+import { SearchIcon } from "lucide-react";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const Home = () => {
   const [topRateds, settopRateds] = useState<MovieItem[]>([]);
   const [nowPlayings, setNowPlayings] = useState<MovieItem[]>([]);
   const [upcomings, setUpcomings] = useState<MovieItem[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     fetchPopular();
@@ -79,9 +82,38 @@ const Home = () => {
     }
   }
 
+  function handleSearch(value: string) {
+    if (value !== "") {
+      searchParams.set("movie", value);
+      searchParams.delete("page");
+    } else {
+      searchParams.delete("movie");
+    }
+    setSearchParams(searchParams);
+  }
+
+  const debounceHandle = debounce(
+    (search: string) => handleSearch(search),
+    500
+  );
+
   return (
     <Layout>
       <div className="h-screen w-full flex flex-col gap-10">
+        <div className="flex items-center border rounded-md px-4 py-2">
+          <input
+            className=" w-full placeholder:italic rounded-md"
+            type="text"
+            placeholder="search movie..."
+            height={10}
+            onChange={(e) => debounceHandle(e.target.value)}
+          ></input>
+          <button
+            onClick={() => navigate(`/search/${searchParams.get("movie")}`)}
+          >
+            <SearchIcon size={17} />
+          </button>
+        </div>
         {/* popular */}
         <div className="flex flex-col">
           <div className="flex justify-between">
