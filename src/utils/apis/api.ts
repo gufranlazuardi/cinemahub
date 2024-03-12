@@ -75,7 +75,7 @@ export const getSearchMovie = async (query?: MovieSearchRequest) => {
     //   params = queryParams.join("&");
     // }
 
-    const url = `/search/movie?query=${query?.title}&page=${query}`;
+    const url = `/search/movie?query=${query?.title}`;
     console.log("url", url);
     const response = await axiosWithConfig.get(url);
 
@@ -84,3 +84,6 @@ export const getSearchMovie = async (query?: MovieSearchRequest) => {
     throw Error(error.response.data.message);
   }
 };
+
+// buat pagination
+// const url = `/search/movie?query=${query?.title}&page=${query}`;

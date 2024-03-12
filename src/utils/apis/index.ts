@@ -5,6 +5,7 @@ import {
   getUpcomingList,
   getDetailMovie,
   getTrailerMovie,
+  getSearchMovie,
 } from "./api";
 import {
   MovieDetail,
@@ -22,6 +23,7 @@ export {
   getUpcomingList,
   getDetailMovie,
   getTrailerMovie,
+  getSearchMovie,
 };
 export type {
   MovieDetail,

@@ -41,28 +41,29 @@ const SearchMovie = () => {
   return (
     <>
       <Layout>
-        <h1>Search Pages</h1>
         <div className="flex">
           <div className="py-5 gap-6 grid grid-cols-6">
-            {searchResult.map((movie) => (
-              <MovieCard
-                data={{
-                  adult: movie.adult,
-                  backdrop_path: movie.backdrop_path,
-                  genre_ids: [],
-                  id: movie.id,
-                  original_language: movie.original_language,
-                  original_title: movie.original_title,
-                  overview: movie.overview,
-                  poster_path: movie.poster_path,
-                  release_date: movie.release_date,
-                  title: movie.title ?? "default",
-                  video: movie.video,
-                  vote_average: "",
-                  vote_count: "",
-                }}
-              />
-            ))}
+            {searchResult.map((movie) => {
+              return (
+                <MovieCard
+                  data={{
+                    adult: movie.adult,
+                    backdrop_path: movie.backdrop_path,
+                    genre_ids: [],
+                    id: movie.id,
+                    original_language: movie.original_language,
+                    original_title: movie.original_title,
+                    overview: movie.overview,
+                    poster_path: movie.poster_path,
+                    release_date: movie.release_date,
+                    title: movie.title ?? "default",
+                    video: movie.video,
+                    vote_average: "",
+                    vote_count: "",
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </Layout>
