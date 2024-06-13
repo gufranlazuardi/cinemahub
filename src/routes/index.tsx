@@ -4,8 +4,12 @@ import ListNowPlaying from "@/pages/list-now-playing";
 import ListPopular from "@/pages/list-popular";
 import ListTopRated from "@/pages/list-top-rated";
 import ListUpcoming from "@/pages/list-upcoming";
+import Login from "@/pages/login";
 import SearchMovie from "@/pages/search-movie";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -36,6 +40,10 @@ export default function Router() {
     {
       path: "/search/:query",
       element: <SearchMovie />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
     },
   ]);
 
