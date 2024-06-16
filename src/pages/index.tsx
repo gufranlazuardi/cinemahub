@@ -129,9 +129,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="py-5 gap-6 grid grid-cols-6">
+          <div className="py-5 gap-6 flex space-x-4 overflow-x-auto">
             {populars.map((popular, index) => (
-              <MovieCard data={popular} key={index} />
+              <div key={index} className="shrink-0 w-1/6">
+                <MovieCard data={popular} />
+              </div>
             ))}
           </div>
         </div>
@@ -153,10 +155,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div className="py-5 gap-6 grid grid-cols-6">
+          <div className="py-5 gap-6 flex space-x-4 overflow-x-auto">
             {topRateds.map((topRated, index) => (
-              <MovieCard data={topRated} key={index} />
+              <div key={index} className="shrink-0 w-1/6">
+                <MovieCard data={topRated} key={index} />
+              </div>
             ))}
           </div>
         </div>
@@ -179,10 +182,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div className="py-5 gap-6 grid grid-cols-6">
+          <div className="py-5 gap-6 flex space-x-4 overflow-x-auto">
             {nowPlayings.map((nowPlaying, index) => (
-              <MovieCard data={nowPlaying} key={index} />
+              <div key={index} className="shrink-0 w-1/6">
+                <MovieCard data={nowPlaying} key={index} />
+              </div>
             ))}
           </div>
         </div>
@@ -206,9 +210,11 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="py-5 gap-6 grid grid-cols-6">
+          <div className="py-5 gap-6 flex space-x-4 overflow-x-auto">
             {upcomings.map((upcoming, index) => (
-              <MovieCard data={upcoming} key={index} />
+              <div key={index} className="shrink-0 w-1/6">
+                <MovieCard data={upcoming} key={index} />
+              </div>
             ))}
           </div>
         </div>
