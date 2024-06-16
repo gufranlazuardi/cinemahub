@@ -18,10 +18,11 @@ const Home = () => {
   const { toast } = useToast();
 
   const [populars, setPopulars] = useState<MovieItem[]>([]);
-  const [topRateds, settopRateds] = useState<MovieItem[]>([]);
+  const [topRateds, setTopRateds] = useState<MovieItem[]>([]);
   const [nowPlayings, setNowPlayings] = useState<MovieItem[]>([]);
   const [upcomings, setUpcomings] = useState<MovieItem[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     fetchPopular();
@@ -46,7 +47,7 @@ const Home = () => {
   async function fetchTopRated() {
     try {
       const result = await getTopRatedList();
-      settopRateds(result.results.slice(0, 12));
+      setTopRateds(result.results.slice(0, 12));
     } catch (error: any) {
       toast({
         title: "Oops! Something went wrong.",
@@ -82,37 +83,32 @@ const Home = () => {
     }
   }
 
-  function handleSearch(value: string) {
-    if (value !== "") {
-      searchParams.set("movie", value);
-      // searchParams.delete("page");
+  const handleInputChange = debounce((value: string) => {
+    setSearchInput(value);
+  }, 500);
+
+  function handleSearch() {
+    if (searchInput !== "") {
+      searchParams.set("movie", searchInput);
     } else {
       searchParams.delete("movie");
     }
     setSearchParams(searchParams);
+    navigate(`/search/${searchInput}`);
   }
-
-  const debounceHandle = debounce(
-    (search: string) => handleSearch(search),
-    500
-  );
 
   return (
     <Layout>
       <div className="h-screen w-full flex flex-col gap-10">
         <div className="flex items-center border rounded-md px-4 py-2">
           <input
-            className=" w-full placeholder:italic rounded-md"
+            className="w-full placeholder:italic rounded-md"
             type="text"
             placeholder="search movie..."
             height={10}
-            onChange={(e) => debounceHandle(e.target.value)}
-          ></input>
-          <button
-            onClick={() =>
-              navigate(`/search/${searchParams.get("movie")}`)
-            }
-          >
+            onChange={(e) => handleInputChange(e.target.value)}
+          />
+          <button onClick={handleSearch}>
             <SearchIcon size={17} />
           </button>
         </div>
@@ -128,7 +124,7 @@ const Home = () => {
                 navigate("/movie/popular");
               }}
             >
-              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+              <div className="hover:bg-green-400 w-full p-2 transition rounded-sm">
                 <p className="text-sm">See all</p>
               </div>
             </div>
@@ -152,7 +148,7 @@ const Home = () => {
                 navigate("/movie/top_rated");
               }}
             >
-              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+              <div className="hover:bg-green-400 w-full p-2 transition rounded-sm">
                 <p className="text-sm">See all</p>
               </div>
             </div>
@@ -178,7 +174,7 @@ const Home = () => {
                 navigate("/movie/now_playing");
               }}
             >
-              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+              <div className="hover:bg-green-400 w-full p-2 transition rounded-sm">
                 <p className="text-sm">See all</p>
               </div>
             </div>
@@ -204,7 +200,7 @@ const Home = () => {
                 navigate("/movie/upcoming");
               }}
             >
-              <div className=" hover:bg-green-400 w-full p-2 transition rounded-sm">
+              <div className="hover:bg-green-400 w-full p-2 transition rounded-sm">
                 <p className="text-sm">See all</p>
               </div>
             </div>

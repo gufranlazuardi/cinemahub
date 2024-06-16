@@ -4,23 +4,26 @@ import { useToast } from "@/components/ui/use-toast";
 import { MovieDetail } from "@/utils/apis";
 import { getSearchMovie } from "@/utils/apis/api";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const SearchMovie = () => {
   const { toast } = useToast();
   const [searchResult, setSearchResult] = useState<MovieDetail[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const { pathname } = location;
   console.log(pathname);
 
   const searchItems = pathname.split("/search/")[1];
 
-  useEffect(() => {
-    if (searchItems !== "") {
-      console.log("halo");
-      fetchSearchMovie(searchItems);
+  function handleSearch(value: string) {
+    if (value !== "") {
+      searchParams.set("movie", value);
+    } else {
+      searchParams.delete("movie");
     }
-  }, [searchItems]);
+    setSearchParams(searchParams);
+  }
 
   async function fetchSearchMovie(query: string) {
     try {
@@ -37,6 +40,10 @@ const SearchMovie = () => {
       });
     }
   }
+
+  useEffect(() => {
+    fetchSearchMovie(searchItems);
+  }, [handleSearch]);
 
   return (
     <>
