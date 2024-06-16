@@ -85,7 +85,7 @@ const Home = () => {
   function handleSearch(value: string) {
     if (value !== "") {
       searchParams.set("movie", value);
-      searchParams.delete("page");
+      // searchParams.delete("page");
     } else {
       searchParams.delete("movie");
     }
@@ -109,7 +109,9 @@ const Home = () => {
             onChange={(e) => debounceHandle(e.target.value)}
           ></input>
           <button
-            onClick={() => navigate(`/search/${searchParams.get("movie")}`)}
+            onClick={() =>
+              navigate(`/search/${searchParams.get("movie")}`)
+            }
           >
             <SearchIcon size={17} />
           </button>
