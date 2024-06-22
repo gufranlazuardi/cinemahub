@@ -1,4 +1,5 @@
-import { Bookmark, Trash } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 const FavoriteCard = () => {
   return (
@@ -12,9 +13,9 @@ const FavoriteCard = () => {
           alt="Movie Poster"
         />
         <div className="flex gap-2 absolute top-1 left-1 z-20">
-          <Trash className="text-white cursor-pointer" />
-          <Bookmark className="text-white cursor-pointer" />
-          <p>disini</p>
+          <Button variant={"destructive"}>
+            <Trash2 className="text-white cursor-pointer" size={18} />
+          </Button>
         </div>
       </div>
       <div className="flex flex-col">

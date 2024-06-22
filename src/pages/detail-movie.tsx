@@ -1,15 +1,17 @@
 import Layout from "@/components/Layout";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { getDetailMovie, getTrailerMovie } from "@/utils/apis";
 import { MovieDetail, TrailerMovieResults } from "@/utils/apis/types";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const DetailMovie = () => {
   const { toast } = useToast();
   const [detail, setDetail] = useState<MovieDetail>();
   const [trailer, setTrailer] = useState<TrailerMovieResults>();
   const { movie_id } = useParams();
+  const navigate = useNavigate();
 
   console.log("params");
   useEffect(() => {
@@ -66,12 +68,19 @@ const DetailMovie = () => {
           </div>
         </div>
         <div className="flex gap-7">
-          <div className="flex">
+          <div className="flex flex-col gap-2">
             <img
               src={`https://image.tmdb.org/t/p/w500/${detail?.poster_path}`}
               alt={detail?.title}
               className="w-36 h-auto"
             />
+            <Button
+              onClick={() => {
+                navigate("/favorite");
+              }}
+            >
+              Add to Favorite
+            </Button>
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-2xl font-bold">{detail?.title}</p>
@@ -80,7 +89,9 @@ const DetailMovie = () => {
               <p>{detail?.release_date}</p>
               <p>{detail?.runtime}</p>
             </div>
-            <p className="text-7xl">{detail?.vote_average.toFixed(1)}</p>
+            <p className="text-7xl">
+              {detail?.vote_average.toFixed(1)}
+            </p>
             {detail?.genres && (
               <div className="flex gap-2 pt-1">
                 {detail.genres.map((genre) => (
