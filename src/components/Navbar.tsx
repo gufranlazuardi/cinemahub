@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
+import { Bookmark } from "lucide-react";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,6 +16,18 @@ const Navbar = () => {
         >
           Cinemahub
         </h1>
+        <div className="flex gap-2 items-center">
+          <Button className="flex gap-2 bg-green-500">
+            <p className="text-sm">Favorite</p>
+            <Bookmark
+              onClick={() => {
+                navigate("/favorite");
+              }}
+              size={17}
+            />
+          </Button>
+          <Button className="bg-green-500">Login</Button>
+        </div>
       </div>
     </div>
   );

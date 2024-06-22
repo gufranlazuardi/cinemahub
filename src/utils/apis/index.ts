@@ -14,6 +14,8 @@ import {
   MovieVideoResult,
   TrailerMovie,
   TrailerMovieResults,
+  loginSchema,
+  LoginSchema,
 } from "./types";
 
 export {
@@ -24,6 +26,7 @@ export {
   getDetailMovie,
   getTrailerMovie,
   getSearchMovie,
+  loginSchema,
 };
 export type {
   MovieDetail,
@@ -32,4 +35,5 @@ export type {
   MovieVideoResult,
   TrailerMovie,
   TrailerMovieResults,
+  LoginSchema,
 };

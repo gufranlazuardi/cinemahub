@@ -14,7 +14,6 @@ export const getPopularList = async () => {
 export const getNowPlayingList = async () => {
   try {
     const response = await axiosWithConfig.get(`/movie/now_playing`);
-
     return response.data;
   } catch (error: any) {
     throw Error(error.response.data.message);
@@ -23,7 +22,6 @@ export const getNowPlayingList = async () => {
 export const getTopRatedList = async () => {
   try {
     const response = await axiosWithConfig.get(`/movie/top_rated`);
-
     return response.data;
   } catch (error: any) {
     throw Error(error.response.data.message);
@@ -33,7 +31,6 @@ export const getTopRatedList = async () => {
 export const getUpcomingList = async () => {
   try {
     const response = await axiosWithConfig.get(`/movie/upcoming`);
-
     return response.data;
   } catch (error: any) {
     throw Error(error.response.data.message);
@@ -43,7 +40,6 @@ export const getUpcomingList = async () => {
 export const getDetailMovie = async (movie_id: number) => {
   try {
     const response = await axiosWithConfig.get(`/movie/${movie_id}`);
-
     return response.data;
   } catch (error: any) {
     throw Error(error.response.data.message);
@@ -52,8 +48,9 @@ export const getDetailMovie = async (movie_id: number) => {
 
 export const getTrailerMovie = async (movie_id: number) => {
   try {
-    const response = await axiosWithConfig.get(`movie/${movie_id}/videos`);
-
+    const response = await axiosWithConfig.get(
+      `movie/${movie_id}/videos`
+    );
     return response.data;
   } catch (error: any) {
     throw Error(error.response.data.message);
@@ -80,6 +77,28 @@ export const getSearchMovie = async (query?: MovieSearchRequest) => {
     const response = await axiosWithConfig.get(url);
 
     return response.data as MovieSearcResponse;
+  } catch (error: any) {
+    throw Error(error.response.data.message);
+  }
+};
+
+export const addFavorite = async (account_id: number) => {
+  try {
+    const response = axiosWithConfig.post(
+      `/account/${account_id}/favorite`
+    );
+    return (await response).data;
+  } catch (error: any) {
+    throw Error(error.response.data.message);
+  }
+};
+
+export const getFavorite = async (account_id: number) => {
+  try {
+    const response = axiosWithConfig.get(
+      `/account/${account_id}/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`
+    );
+    return (await response).data;
   } catch (error: any) {
     throw Error(error.response.data.message);
   }
