@@ -17,14 +17,14 @@ const Navbar = () => {
           Cinemahub
         </h1>
         <div className="flex gap-2 items-center">
-          <Button className="flex gap-2 bg-green-600">
+          <Button
+            className="flex gap-2 bg-green-600"
+            onClick={() => {
+              navigate("/favorite");
+            }}
+          >
             <p className="text-sm">Favorite</p>
-            <Bookmark
-              onClick={() => {
-                navigate("/favorite");
-              }}
-              size={17}
-            />
+            <Bookmark size={17} />
           </Button>
           <Button
             className="bg-green-600"
