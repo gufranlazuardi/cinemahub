@@ -26,7 +26,14 @@ const Navbar = () => {
               size={17}
             />
           </Button>
-          <Button className="bg-green-500">Login</Button>
+          <Button
+            className="bg-green-500"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </Button>
         </div>
       </div>
     </div>
