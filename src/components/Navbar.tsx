@@ -17,7 +17,7 @@ const Navbar = () => {
           Cinemahub
         </h1>
         <div className="flex gap-2 items-center">
-          <Button className="flex gap-2 bg-green-500">
+          <Button className="flex gap-2 bg-green-600">
             <p className="text-sm">Favorite</p>
             <Bookmark
               onClick={() => {
@@ -27,7 +27,7 @@ const Navbar = () => {
             />
           </Button>
           <Button
-            className="bg-green-500"
+            className="bg-green-600"
             onClick={() => {
               navigate("/login");
             }}
